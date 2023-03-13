@@ -1,0 +1,16 @@
+{
+	"name": "zoz_node_simple",
+	"version": "1.0.0",
+	"description": "Node.js on Docker",
+	"author": "Rob Reiss",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"dependencies": {
+		"express": "^4.18.2"
+	},
+	"devDependencies": {
+		"@types/node": "^18.15.0"
+	}
+}
