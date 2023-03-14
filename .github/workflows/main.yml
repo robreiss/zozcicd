@@ -33,6 +33,8 @@ jobs:
     - name: Deploy to App Runner
       id: deploy-apprunner
       uses: awslabs/amazon-app-runner-deploy@main        
+      env:
+          BORK: BOO7
       with:
         service: zoz-apprunner-node-2
         image: ${{ steps.build-image.outputs.image }}          
@@ -43,6 +45,8 @@ jobs:
         memory : 2
         port: 8080
         wait-for-service-stability-seconds: 1200
+        copy-env-vars: |
+            BORK
     
     - name: App Runner output
       run: echo "App runner output ${{ steps.deploy-apprunner.outputs.service-id }}" 
