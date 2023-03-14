@@ -1,4 +1,4 @@
-name: AWS example workflow
+name: Zoz Node Simple
 on:
   push
 permissions:
@@ -8,11 +8,9 @@ jobs:
   deploy:
     name: Zoz Whoop
     runs-on: ubuntu-latest    
-    env:
-      AWS_DEFAULT_REGION: us-west-2
 
     steps:
-    - name: Configure AWS credentials from Test account
+    - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
         role-to-assume: arn:aws:iam::407767216233:role/github-actions-role
