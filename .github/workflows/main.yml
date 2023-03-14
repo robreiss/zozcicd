@@ -15,4 +15,4 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v3
       with:
         role-to-assume: arn:aws:iam::407767216233:role/ZozBotoAdmin
-        aws-region: us-east-1
+        aws-region: us-west-2
