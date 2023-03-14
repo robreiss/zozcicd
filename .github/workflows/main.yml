@@ -17,3 +17,6 @@ jobs:
         aws-region: us-west-2
     - name: Checkout
       uses: actions/checkout@v3
+    - name:  Copy server.js to s3
+      run: |
+          aws s3 cp ./server.js s3://zoztestbucket/
