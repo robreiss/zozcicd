@@ -30,4 +30,18 @@ jobs:
         docker build -f ./Dockerfile.simplenode -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"  
-          
+    - name: Deploy to App Runner
+      id: deploy-apprunner
+      uses: awslabs/amazon-app-runner-deploy@main        
+      with:
+        service: zoz-apprunner-node-2
+        image: ${{ steps.build-image.outputs.image }}          
+        access-role-arn: arn:aws:iam::407767216233:role/service-role/AppRunnerECRAccessRole
+        region: us-west-2
+        cpu : 1
+        memory : 2
+        port: 8080
+        wait-for-service-stability-seconds: 1200
+    
+    - name: App Runner output
+      run: echo "App runner output ${{ steps.deploy-apprunner.outputs.service-id }}" 
