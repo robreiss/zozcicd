@@ -6,13 +6,16 @@ permissions:
   contents: read
 jobs:
   deploy:
-    name: Upload to Amazon S3
+    name: Zoz Whoop
     runs-on: ubuntu-latest    
+    env:
+      AWS_DEFAULT_REGION: us-west-2
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
     - name: Configure AWS credentials from Test account
       uses: aws-actions/configure-aws-credentials@v2
       with:
-        role-to-assume: arn:aws:iam::407767216233:role/ZozBotoAdmin
+        role-to-assume: arn:aws:iam::407767216233:role/github-actions-role
         aws-region: us-west-2
+    - name: Checkout
+      uses: actions/checkout@v3
