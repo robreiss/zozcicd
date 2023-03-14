@@ -34,9 +34,9 @@ async function pgget() {
 
 const app = express();
 app.get('/', async (req, res) => {
-	// let msg = await pgget()
-	let msg = "boo"
-	res.send('Hello World, deployed from done for night<br>' + msg);
+	let msg = await pgget()
+	// let msg = "boo"
+	res.send('Hello World, deployed from done for night bra<br>' + msg);
 });
 
 app.listen(PORT, HOST, () => {
