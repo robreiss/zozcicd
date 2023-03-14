@@ -15,14 +15,13 @@ const pool = new Pool({
 	port: 5432,
 	user: 'fircrest',
 	database: 'fircrest',
-	password: 'Taco88night22!',
+	password: process.env.PGPASSWORD,
 	ssl: {
 		ca: [fs.readFileSync(path.resolve('./rds-ca-2019-root.pem'), 'ascii')]
 	}
 })
 
 async function pgget() {
-	// const { rows } = await pool.query('SELECT $1::text as message', ['Hello 12 Postgres!'])
 	const { rows } = await pool.query('SELECT * from test')
 	let msg = ""
 	for (let i = 0; i < rows.length; i++) {
@@ -35,7 +34,6 @@ async function pgget() {
 const app = express();
 app.get('/', async (req, res) => {
 	let msg = await pgget()
-	// let msg = "boo"
 	res.send('Hello World, deployed from done for night bra<br>' + msg);
 });
 
