@@ -15,7 +15,7 @@ const pool = new Pool({
 	port: 5432,
 	user: 'fircrest',
 	database: 'fircrest',
-	password: process.env.PGPASSWORD,
+	password: 'Taco88night22!',
 	ssl: {
 		ca: [fs.readFileSync(path.resolve('./rds-ca-2019-root.pem'), 'ascii')]
 	}
