@@ -1,0 +1,18 @@
+name: AWS example workflow
+on:
+  push
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  deploy:
+    name: Upload to Amazon S3
+    runs-on: ubuntu-latest    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Configure AWS credentials from Test account
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        role-to-assume: arn:aws:iam::407767216233:role/ZozBotoAdmin
+        aws-region: us-east-1
