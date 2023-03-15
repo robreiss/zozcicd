@@ -2,7 +2,7 @@ name: Zoz Node Simple
 on:
   push:
     tags:
-      - 'prod*'
+      - prod*
 permissions:
   id-token: write
   contents: read
