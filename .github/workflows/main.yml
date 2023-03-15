@@ -1,6 +1,8 @@
 name: Zoz Node Simple
 on:
-  push
+  push:
+    tags:
+      - 'prod*'
 permissions:
   id-token: write
   contents: read
